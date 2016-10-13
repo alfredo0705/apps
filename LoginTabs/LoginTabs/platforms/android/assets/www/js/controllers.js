@@ -40,7 +40,6 @@ angular.module('starter.controllers', [])
                 template: 'Welcom! ' + respuesta.Nombres
             });
             $scope.elementos = respuesta;
-            console.log($scope.elementos);
             $state.go('tab.dash');
         }).catch(function(err) {
             var alertPopup = $ionicPopup.alert({
@@ -54,5 +53,4 @@ angular.module('starter.controllers', [])
 .controller('CategoriasCtrl', function ($scope, CategoriaService, $ionicPopup) {
     
     $scope.categorias = CategoriaService.getCats();
-    console.log($scope.categorias);
 })
