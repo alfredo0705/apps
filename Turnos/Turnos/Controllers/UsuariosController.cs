@@ -141,21 +141,21 @@ namespace Turnos.Controllers
             return CreatedAtRoute("DefaultApi", new { id = usuario.UsuarioID }, usuario);
         }
 
-        // DELETE: api/Usuarios/5
-        [ResponseType(typeof(Usuario))]
-        public IHttpActionResult DeleteUsuario(int id)
-        {
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/Usuarios/5
+        //[ResponseType(typeof(Usuario))]
+        //public IHttpActionResult DeleteUsuario(int id)
+        //{
+        //    Usuario usuario = db.Usuarios.Find(id);
+        //    if (usuario == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            db.Usuarios.Remove(usuario);
-            db.SaveChanges();
-            UsersHelper.DeleteUser(usuario.Email);
-            return Ok(usuario);
-        }
+        //    db.Usuarios.Remove(usuario);
+        //    db.SaveChanges();
+        //    UsersHelper.DeleteUser(usuario.Email);
+        //    return Ok(usuario);
+        //}
 
         protected override void Dispose(bool disposing)
         {

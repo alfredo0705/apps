@@ -34,5 +34,7 @@ namespace Turnos.Models
         public System.Data.Entity.DbSet<Turnos.Models.ProfesionalServicio> ProfesionalServicios { get; set; }
 
         public System.Data.Entity.DbSet<Turnos.Models.Categoria> Categorias { get; set; }
+
+        public System.Data.Entity.DbSet<Turnos.Models.CategoriaEmpresa> CategoriaEmpresas { get; set; }
     }
 }

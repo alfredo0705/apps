@@ -41,7 +41,7 @@ angular.module('starter.controllers', [])
             });
             $scope.elementos = respuesta;
             console.log($scope.elementos);
-            //$state.go('tab.dash');
+            $state.go('tab.dash');
         }).catch(function(err) {
             var alertPopup = $ionicPopup.alert({
                 title: 'Login failed!',
@@ -49,4 +49,10 @@ angular.module('starter.controllers', [])
             });
         });
     }    
+})
+
+.controller('CategoriasCtrl', function ($scope, CategoriaService, $ionicPopup) {
+    
+    $scope.categorias = CategoriaService.getCats();
+    console.log($scope.categorias);
 })

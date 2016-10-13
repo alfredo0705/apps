@@ -1,4 +1,4 @@
-var host = 'http://localhost:81/api/Usuarios/';
+var host = 'http://localhost:81/api/';
 
 angular.module('starter.services', [])
 
@@ -59,7 +59,7 @@ angular.module('starter.services', [])
 
             var req = {
                 method: 'POST',
-                url: host + 'Login',
+                url: host + 'Usuarios/Login',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -71,22 +71,33 @@ angular.module('starter.services', [])
             }).error (function (err) {
                 defered.reject('Wrong credentials.');
             });
-            //return respuesta
-            //if (name == 'user' && pw == 'secret') {
-            //    deferred.resolve('Welcome ' + name + '!');
-            //} else {
-            //    deferred.reject('Wrong credentials.');
-            //}
-            //promise.success = function (fn) {
-            //    promise.then(fn);
-            //    return promise;
-            //}
-            //promise.error = function (fn) {
-            //    promise.then(null, fn);
-            //    return promise;
-            //}
             return promise;
         }
     }
+})
+
+.service('CategoriaService', function ($q, $http) {
+
+    var catService = {};
+
+    catService.categorias = [];
+        var req = {
+            method: 'GET',
+            url: 'http://localhost:50610/api/categorias/getCategorias',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        $http(req).then(function (response) {
+            for (var i = 0; i < response.data.length; i++) {
+                catService.categorias.push(response.data[i]);
+            }
+        });
+
+        catService.getCats = function () {
+            return catService.categorias;
+        };
+        return catService;
 })
 
