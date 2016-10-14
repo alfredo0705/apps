@@ -1,4 +1,4 @@
-var host = 'http://localhost:81/api/';
+var host = 'http://localhost:50610/api/';
 
 angular.module('starter.services', [])
 
@@ -59,7 +59,7 @@ angular.module('starter.services', [])
 
             var req = {
                 method: 'POST',
-                url: host + 'Usuarios/Login',
+                url: host + 'movil/Login',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -76,14 +76,14 @@ angular.module('starter.services', [])
     }
 })
 
-.service('CategoriaService', function ($q, $http) {
+.service('CategoriaService', function ($http) {
 
     var catService = {};
 
     catService.categorias = [];
         var req = {
             method: 'GET',
-            url: 'http://localhost:50610/api/categorias/getCategorias',
+            url: host + 'movil/getCategorias',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -97,7 +97,61 @@ angular.module('starter.services', [])
 
         catService.getCats = function () {
             return catService.categorias;
-        };
+        };        
+
         return catService;
 })
 
+.service('EmpresasService', function ($http) {
+
+    var empService = {};
+    empService.empresas = [];
+
+    empService.getEmpresas = function (id) {
+        empService.empresas = [];
+        var reqe = {
+            method: 'GET',
+            url: host + 'movil/getEmpresas/' + id,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        $http(reqe).then(function (response) {
+            if (response.data != null) {                
+                for (var i = 0; i < response.data.length; i++) {
+                    empService.empresas.push(response.data[i]);
+                }
+            }
+        });
+        return empService.empresas;
+    };
+    return empService;
+})
+
+.service('ProfesionalessasService', function ($http) {
+
+    var proService = {};
+    proService.profesionales = [];
+
+    proService.getProfesionales = function (id) {
+        proService.profesionales = [];
+        var reqe = {
+            method: 'GET',
+            url: host + 'movil/getProfesionales/' + id,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        $http(reqe).then(function (response) {
+            if (response.data != null) {
+                for (var i = 0; i < response.data.length; i++) {
+                    proService.profesionales.push(response.data[i]);
+                }
+            }
+        });
+        return proService.profesionales;
+    };
+    return proService;
+})

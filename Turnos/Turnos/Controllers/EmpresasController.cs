@@ -17,9 +17,25 @@ namespace Turnos.Controllers
         private TurnosContext db = new TurnosContext();
 
         // GET: api/Empresas
-        public IQueryable<Empresa> GetEmpresas()
+        public IEnumerable<Empresa> GetEmpresas()
         {
-            return db.Empresas;
+            List<Empresa> empresa = new List<Empresa>();
+            foreach (var empres in db.Empresas)
+            {
+                empresa.Add(new Empresa
+                {
+                    Celular = empres.Celular,
+                    Contacto = empres.Contacto,
+                    Direccion = empres.Direccion,
+                    Email = empres.Email,
+                    Imagen = empres.Imagen,
+                    NitEmpresa = empres.NitEmpresa,
+                    Nombre = empres.Nombre,
+                    Telefono = empres.Telefono
+                });
+            }
+            IEnumerable<Empresa> empresas = empresa;
+            return empresas;
         }
 
         // GET: api/Empresas/5

@@ -16,9 +16,20 @@ namespace Turnos.Controllers
     {
         private TurnosContext db = new TurnosContext();
 
-        public IQueryable<CategoriaEmpresa> GetCategoriaEmpresas()
+        public IEnumerable<CategoriaEmpresa> GetCategoriaEmpresas()
         {
-            return db.CategoriaEmpresas;
+            List<CategoriaEmpresa> cate = new List<CategoriaEmpresa>();
+            foreach (var cat in db.CategoriaEmpresas)
+            {
+                cate.Add(new CategoriaEmpresa
+                {
+                    CategoriaEmpresaID = cat.CategoriaEmpresaID,
+                    CategoriaID = cat.CategoriaID,
+                    NitEmpresa = cat.NitEmpresa
+                });
+            }
+            IEnumerable<CategoriaEmpresa> categorias = cate;
+            return categorias;
         }
 
         // GET: api/CategoriaEmpresas/5

@@ -1,0 +1,17 @@
+﻿<ion-view class="category-feeds-view">
+    <ion-nav-title>
+        <span>Profesionales</span>
+    </ion-nav-title>
+    <ion-content>
+        <div class="list category-feeds">
+            <a ng-repeat="profesional in profesionales" class="item item-icon-right">
+                <img class="thumbnail" ng-src="img/{{profesional.Imagen}}" />
+                <div>
+                    <span class="title">{{profesional.Nombre}}</span>
+                    <p class="description">{{profesional.Nombre}}</p>
+                </div>
+                <i class="icon ion-arrow-right-c"></i>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>

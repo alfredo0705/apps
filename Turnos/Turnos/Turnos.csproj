@@ -241,6 +241,8 @@
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HoraAtencionesController.cs" />
+    <Compile Include="Controllers\MovilApiController.cs" />
+    <Compile Include="Controllers\ProfesionalesController.cs" />
     <Compile Include="Controllers\TipoServiciosController.cs" />
     <Compile Include="Controllers\TurnosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -327,6 +329,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Profesionales\Create.cshtml" />
+    <Content Include="Views\Profesionales\Delete.cshtml" />
+    <Content Include="Views\Profesionales\Details.cshtml" />
+    <Content Include="Views\Profesionales\Edit.cshtml" />
+    <Content Include="Views\Profesionales\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

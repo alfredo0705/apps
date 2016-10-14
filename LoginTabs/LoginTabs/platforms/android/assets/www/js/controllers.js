@@ -51,6 +51,16 @@ angular.module('starter.controllers', [])
 })
 
 .controller('CategoriasCtrl', function ($scope, CategoriaService, $ionicPopup) {
-    
+    $scope.categorias = [];
     $scope.categorias = CategoriaService.getCats();
+})
+
+.controller('EmpresasCtrl', function ($scope, EmpresasService, $stateParams) {
+    $scope.empresas = [];
+    $scope.empresas = EmpresasService.getEmpresas($stateParams.empresaId);
+})
+
+.controller('ProfesionalesCtrl', function ($scope, ProfesionalessasService, $stateParams) {
+    $scope.profesionales = [];
+    $scope.profesionales = ProfesionalessasService.getProfesionales($stateParams.profesionalId);
 })

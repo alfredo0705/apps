@@ -28,7 +28,7 @@
     <ion-content>
         <div class="row categories-list">
             <div ng-repeat="category in categorias" class="col col-50">
-                <a class="feed-category" ui-sref="app.category-feeds({categoryId: (category.title | slugify)})">
+                <a class="feed-category" href="#/tab/empresas/{{category.CategoriaID}}">
                     <img class="category-image" ng-src="img/feeds/{{category.Imagen}}" />
                     <div class="category-bg"></div>
                     <span class="category-title">{{category.Nombre}}</span>

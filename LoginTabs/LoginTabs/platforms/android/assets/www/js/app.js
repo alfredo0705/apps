@@ -75,6 +75,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           }
       })
 
+    .state('tab.empresas', {
+        url: '/empresas/:empresaId',
+        views: {
+            'tab-dash': {
+                templateUrl: 'templates/empresas.html',
+                controller: 'EmpresasCtrl'
+            }
+        }
+    })
+
+    .state('tab.profesional', {
+        url: '/profesional/:profesionalId',
+        views: {
+            'tab-dash': {
+                templateUrl: 'templates/profesional.html',
+                controller: 'ProfesionalesCtrl'
+            }
+        }
+    })
+
     .state('tab.account', {
         url: '/account',
         views: {
