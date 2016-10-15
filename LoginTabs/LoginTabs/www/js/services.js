@@ -155,3 +155,26 @@ angular.module('starter.services', [])
     };
     return proService;
 })
+
+.service('EmpresaService', function ($http) {
+
+    var empreService = {};
+    empreService.Empresa = {};
+
+    empreService.getEmpresa = function (id) {
+        empreService.Empresa = {};
+        var reqe = {
+            method: 'GET',
+            url: host + 'movil/getEmpresa/' + id,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        $http(reqe).then(function (response) {
+            empreService.Empresa.push(response.data[i]);
+        });
+        return empreService.Empresa;
+    };
+    return empreService;
+})

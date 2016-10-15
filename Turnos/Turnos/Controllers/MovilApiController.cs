@@ -122,6 +122,30 @@ namespace Turnos.Controllers
             return empresas;
         }
 
+        [Route("getEmpresa/{id}")]
+        public IHttpActionResult GetEmpresa(string id)
+        {
+            var empre = db.Empresas.Find(id);
+            if (empre == null)
+            {
+                return BadRequest("Empresa no existe");
+            }
+
+            var empresa = new Empresa
+            {
+                Celular = empre.Celular,
+                Contacto = empre.Contacto,
+                Direccion = empre.Direccion,
+                Email = empre.Email,
+                Imagen = empre.Imagen,
+                NitEmpresa = empre.NitEmpresa,
+                Nombre = empre.Nombre,
+                Telefono = empre.Telefono
+            };
+            
+            return Ok(empresa);
+        }
+
         [Route("getProfesionales/{id}")]
         [ResponseType(typeof(Categoria))]
         public IEnumerable<Profesional> GetProfesionales(string id)
