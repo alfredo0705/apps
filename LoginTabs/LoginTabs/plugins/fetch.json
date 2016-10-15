@@ -70,16 +70,5 @@
         },
         "is_top_level": true,
         "variables": {}
-    },
-    "cordova-plugin-googlemaps": {
-        "source": {
-            "type": "git",
-            "url": "https://github.com/mapsplugin/cordova-plugin-googlemaps.git",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {
-            "API_KEY_FOR_ANDROID": "AIzaSyC64EEArHmW2UttYoB2YTxWa1hKSru9w7A"
-        }
     }
 }

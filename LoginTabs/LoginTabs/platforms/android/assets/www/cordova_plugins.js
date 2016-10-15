@@ -54,13 +54,6 @@ module.exports = [
         "clobbers": [
             "navigator.globalization"
         ]
-    },
-    {
-        "file": "plugins/cordova-plugin-googlemaps/www/googlemaps-cdv-plugin.js",
-        "id": "cordova-plugin-googlemaps.cordova-plugin-googlemaps",
-        "clobbers": [
-            "cordova-plugin-googlemaps"
-        ]
     }
 ];
 module.exports.metadata = 
@@ -74,8 +67,7 @@ module.exports.metadata =
     "ionic-plugin-keyboard": "2.2.1",
     "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-geolocation": "2.4.0",
-    "cordova-plugin-globalization": "1.0.4",
-    "cordova-plugin-googlemaps": "1.3.9"
+    "cordova-plugin-globalization": "1.0.4"
 };
 // BOTTOM OF METADATA
 });
