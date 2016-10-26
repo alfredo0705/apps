@@ -65,6 +65,11 @@ angular.module('starter.controllers', [])
     $scope.profesionales = ProfesionalessasService.getProfesionales($stateParams.profesionalId);
 })
 
+.controller('ServiciosCtrl', function ($scope, ServiciosService, $stateParams) {
+    $scope.servicios = [];
+    $scope.servicios = ServiciosService.getServicios($stateParams.nit);
+})
+
 .controller('MapsCtrl', function ($scope, $ionicLoading) {
 
     $scope.info_position = {

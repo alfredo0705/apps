@@ -95,6 +95,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
     })
 
+    .state('tab.servicios', {
+        url: '/servicios/:nit',
+        views: {
+            'tab-dash': {
+                templateUrl: 'templates/servicios.html',
+                controller: 'ServiciosCtrl'
+            }
+        }
+    })
+
     .state('tab.maps', {
         url: "/maps",
         views: {

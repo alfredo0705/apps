@@ -156,6 +156,33 @@ angular.module('starter.services', [])
     return proService;
 })
 
+.service('ServiciosService', function ($http) {
+
+    var serService = {};
+    serService.servicios = [];
+
+    serService.getServicios = function (id) {
+        serService.servicios = [];
+        var reqe = {
+            method: 'GET',
+            url: host + 'movil/getServicios/' + id,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        $http(reqe).then(function (response) {
+            if (response.data != null) {
+                for (var i = 0; i < response.data.length; i++) {
+                    serService.servicios.push(response.data[i]);
+                }
+            }
+        });
+        return serService.servicios;
+    };
+    return serService;
+})
+
 .service('EmpresaService', function ($http) {
 
     var empreService = {};

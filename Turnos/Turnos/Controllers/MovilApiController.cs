@@ -148,24 +148,68 @@ namespace Turnos.Controllers
 
         [Route("getProfesionales/{id}")]
         [ResponseType(typeof(Categoria))]
-        public IEnumerable<Profesional> GetProfesionales(string id)
+        public IEnumerable<Profesional> GetProfesionales(int? id)
         {
             var profesional = new List<Profesional>();
+            var profesionalServicio = db.ProfesionalServicios.Where(p => p.TipoServicioID == id).ToList();
 
-            foreach (var categ in db.Profesionales.Where(c => c.NitEmpresa == id))
-            {                
-                profesional.Add(new Profesional
+            foreach (var pro in profesionalServicio)
+            {
+                if (profesional.Where(p => p.ProfesionalID == pro.ProfesionalID).FirstOrDefault() == null)
                 {
-                    Imagen = categ.Imagen,
-                    NitEmpresa = categ.NitEmpresa,
-                    Nombre = categ.Nombre,
-                    ProfesionalID = categ.ProfesionalID
-                    
-                });
+                    var profes = db.Profesionales.Find(pro.ProfesionalID);
+                    profesional.Add(new Profesional
+                    {
+                        Imagen = profes.Imagen,
+                        NitEmpresa = profes.NitEmpresa,
+                        Nombre = profes.Nombre,
+                        ProfesionalID = profes.ProfesionalID
+                    });
+                }
             }
             IEnumerable<Profesional> profesionales = profesional;
 
             return profesionales;
+        }
+
+        [Route("getServicios/{id}")]
+        [ResponseType(typeof(Categoria))]
+        public IEnumerable<TipoServicio> GetServicios(string id)
+        {
+            var servicio = new List<TipoServicio>();
+
+            var servicioProfesional = db.ProfesionalServicios.Where(p => p.Profesional.NitEmpresa == id).ToList();
+            foreach (var serv in servicioProfesional)
+            {
+                if (servicio.Where(s => s.TipoServicioID == serv.TipoServicioID).FirstOrDefault() == null)
+                {
+                    servicio.Add(db.TipoServicios.Find(serv.TipoServicioID));
+                }
+            }
+            IEnumerable<TipoServicio> servicios = servicio;
+
+            return servicios;
+        }
+
+        [Route("getTurnos/{id}")]
+        [ResponseType(typeof(Categoria))]
+        public IEnumerable<string> GetTurnos(string id)
+        {
+            var turnosLibres = new List<string>();
+
+            var turnos = db.TipoServicios.Find(2);
+            TimeSpan horaFinal = TimeSpan.Parse("20:00:00");
+
+            TimeSpan horaT = TimeSpan.Parse("08:00:00");
+            while (horaFinal - TimeSpan.Parse(turnos.Duracion) >= horaT)
+            {
+                turnosLibres.Add(horaT.ToString());
+                horaT += TimeSpan.Parse(turnos.Duracion);
+            }
+
+            IEnumerable<string> servicios = turnosLibres;
+
+            return servicios;
         }
 
         protected override void Dispose(bool disposing)
